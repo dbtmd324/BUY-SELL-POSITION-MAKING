@@ -7,10 +7,8 @@ import plotly.graph_objs as go
 if not os.path.exists('images'):
     os.makedirs('images')
 
-A = 'A377300'
-
 # 1. OHLCV 데이터 불러오기
-df = pd.read_csv(f'./OHLCV_data/{A}.csv', index_col=0, parse_dates=True, sep=',', names=['date', 'open', 'high', 'low', 'close', 'volume'])
+df = pd.read_csv('A035420.csv', index_col=0, parse_dates=True, sep=',', names=['date', 'open', 'high', 'low', 'close', 'volume'])
 
 # 2. 날짜 변경 line 저장
 date_change_line_list = []
@@ -48,4 +46,6 @@ for i in range(len(date_change_line_list) - 1) :
     fig.update_layout(xaxis_rangeslider_visible=False, xaxis={'visible': False}, yaxis={'visible': False}) # x축, y축 등 기타 요소 안보이게 설정
 
     # 4. 이미지 저장
-    fig.write_image(f'images/{A}'+'_{0:05d}.png'.format(i)) # image 폴더에 저장
+    fig.write_image('images/naver_test{0:05d}.png'.format(i)) # image 폴더에 저장
+    if i == 5 :
+        break
